@@ -189,6 +189,10 @@ class TemplateExporter(Exporter):
     #Extension that the template files use.
     template_extension = Unicode(".tpl").tag(config=True, affects_environment=True)
 
+    exclude_cdn = Bool(False,
+        help = "Exclude external CDNs for the html output and use a local libs/ folder"
+        ).tag(config=True)
+
     exclude_input = Bool(False,
         help = "This allows you to exclude code cell inputs from all templates if set to True."
         ).tag(config=True)
@@ -304,6 +308,7 @@ class TemplateExporter(Exporter):
                 'include_markdown': not self.exclude_markdown,
                 'include_raw': not self.exclude_raw,
                 'include_unknown': not self.exclude_unknown,
+                'use_local_libs': not self.exclude_cdn,
                 'include_input': not self.exclude_input,
                 'include_output': not self.exclude_output,
                 'include_input_prompt': not self.exclude_input_prompt,

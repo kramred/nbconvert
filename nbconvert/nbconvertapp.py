@@ -123,6 +123,14 @@ nbconvert_flags.update({
         """Exclude input cells and output prompts from converted document. 
         This mode is ideal for generating code-free reports."""
         ),
+    'no-cdn' : (
+        {'TemplateExporter' : {
+            'exclude_cdn' : False,
+            }
+        },
+        """Exclude fetching resources from external content delivery 
+        network (CDN) for html output. Uses a local libs/ folder instead."""
+        ),
 })
 
 
